@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il nostro percorso insieme</title>
+    <style>
+        /* ----- STILE DELLA TIMELINE ----- */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d53f8c;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .sottotitolo {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        /* Contenitore della timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* Linea centrale della timeline */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #d53f8c;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* Contenitore di ogni evento */
+        .evento {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+
+        /* Eventi a sinistra e destra */
+        .evento.sinistra {
+            left: 0;
+            text-align: right;
+        }
+
+        .evento.destra {
+            left: 50%;
+            text-align: left;
+        }
+
+        /* Punto sulla timeline */
+        .evento::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #d53f8c;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Contenuto dell'evento */
+        .contenuto {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .contenuto h2 {
+            color: #d53f8c;
+            margin-top: 0;
+        }
+
+        .contenuto p {
+            margin: 5px 0;
+        }
+
+        .data {
+            font-weight: bold;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* Immagini nella timeline */
+        .immagine-event {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Testo centrale (opzionale) */
+        .testo-centrale {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        /* Pulsante per la musica (opzionale) */
+        .musica-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .musica-btn {
+            background: #d53f8c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .musica-btn:hover {
+            background: #b83280;
+        }
+
+        /* Responsive per mobile */
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .evento {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+
+            .evento::after {
+                left: 15px;
+            }
+
+            .evento.destra {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TITOLO E SOTTOTITOLO (MODIFICA QUI) -->
+    <h1>Il nostro percorso insieme</h1>
+    <p class="sottotitolo">Da quel primo giorno a oggi...</p>
+
+    <!-- TIMELINE: Aggiungi/rimuovi eventi qui -->
+    <div class="timeline">
+        <!-- EVENTO 1 (MODIFICA QUI) -->
+        <div class="evento sinistra">
+            <div class="contenuto">
+                <h2>Il nostro primo incontro</h2>
+                <p class="data">15 Maggio 2023</p>
+                <p>Testo personalizzato: descrivi come vi siete conosciuti, dove, emozioni...</p>
+                <img src="immagini/primo-incontro.jpg" alt="Primo incontro" class="immagine-event">
+            </div>
+        </div>
+
+        <!-- EVENTO 2 (MODIFICA QUI) -->
+        <div class="evento destra">
+            <div class="contenuto">
+                <h2>Il primo appuntamento</h2>
+                <p class="data">22 Maggio 2023</p>
+                <p>Testo personalizzato: dove siete andati, cosa avete fatto...</p>
+                <img src="immagini/primo-appuntamento.jpg" alt="Primo appuntamento" class="immagine-event">
+            </div>
+        </div>
+
+        <!-- EVENTO 3 (MODIFICA QUI) -->
+        <div class="evento sinistra">
+            <div class="contenuto">
+                <h2>Il primo viaggio insieme</h2>
+                <p class="data">10 Agosto 2023</p>
+                <p>Testo personalizzato: dove siete stati, aneddoti...</p>
+                <img src="immagini/viaggio.jpg" alt="Primo viaggio" class="immagine-event">
+            </div>
+        </div>
+
+        <!-- EVENTO 4 (MODIFICA QUI) -->
+        <div class="evento destra">
+            <div class="contenuto">
+                <h2>Il nostro annuncio speciale</h2>
+                <p class="data">14 Febbraio 2024</p>
+                <p>Testo personalizzato: un momento importante (es. "ci siamo detti ti amo", "abbiamo deciso di convivere", ecc.)...</p>
+            </div>
+        </div>
+
+        <!-- EVENTO 5 (MODIFICA QUI) -->
+        <div class="evento sinistra">
+            <div class="contenuto">
+                <h2>Oggi: il nostro anniversario!</h2>
+                <p class="data">9 Luglio 2026</p>
+                <p>Testo personalizzato: un messaggio per questo giorno speciale...</p>
+                <img src="immagini/anniversario.jpg" alt="Anniversario" class="immagine-event">
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTO CENTRALE (OPZIONALE) -->
+    <p class="testo-centrale">
+        "Grazie per essere la mia persona preferita. Ogni giorno con te è un’avventura."
+    </p>
+
+    <!-- PULSANTE PER LA MUSICA (OPZIONALE) -->
+    <div class="musica-container">
+        <button class="musica-btn" onclick="playMusica()">▶ Ascolta la nostra canzone</button>
+        <audio id="musica" src="musica/la-nostra-canzone.mp3" loop></audio>
+    </div>
+
+    <script>
+        // Funzione per riprodurre la musica
+        function playMusica() {
+            const audio = document.getElementById('musica');
+            const btn = document.querySelector('.musica-btn');
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = "⏸ Pausa";
+            } else {
+                audio.pause();
+                btn.textContent = "▶ Ascolta la nostra canzone";
+            }
+        }
+    </script>
+</body>
+</html>
