@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il nostro percorso insieme</title>
+    <title>🟢 Il primo anno insieme</title>
     <style>
-        /* ----- STILE DELLA TIMELINE ----- */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
@@ -13,31 +12,24 @@
             padding: 20px;
             color: #333;
         }
-
         h1 {
             text-align: center;
             color: #d53f8c;
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
-
         .sottotitolo {
             text-align: center;
             color: #666;
             font-style: italic;
             margin-bottom: 40px;
         }
-
-        /* Contenitore della timeline */
         .timeline {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             padding: 20px 0;
         }
-
-        /* Linea centrale della timeline */
         .timeline::after {
             content: '';
             position: absolute;
@@ -48,28 +40,23 @@
             left: 50%;
             margin-left: -3px;
         }
-
-        /* Contenitore di ogni evento */
         .evento {
             padding: 10px 40px;
             position: relative;
             background-color: inherit;
             width: 50%;
             margin-bottom: 30px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
-
-        /* Eventi a sinistra e destra */
-        .evento.sinistra {
-            left: 0;
-            text-align: right;
+        .evento.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .evento.destra {
-            left: 50%;
-            text-align: left;
-        }
-
-        /* Punto sulla timeline */
+        .evento.sinistra { left: 0; text-align: right; }
+        .evento.destra { left: 50%; text-align: left; }
         .evento::after {
             content: '';
             position: absolute;
@@ -82,8 +69,8 @@
             border-radius: 50%;
             z-index: 1;
         }
-
-        /* Contenuto dell'evento */
+        .evento.destra::after { left: -13px; }
+        
         .contenuto {
             padding: 20px;
             background: white;
@@ -91,163 +78,161 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             position: relative;
         }
-
-        .contenuto h2 {
-            color: #d53f8c;
-            margin-top: 0;
+        .sticker {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 20px;
+            animation: pulse 2s infinite ease-in-out;
         }
-
-        .contenuto p {
-            margin: 5px 0;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
-
-        .data {
-            font-weight: bold;
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        /* Immagini nella timeline */
-        .immagine-event {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Testo centrale (opzionale) */
-        .testo-centrale {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 1.2em;
-            color: #555;
-        }
-
-        /* Pulsante per la musica (opzionale) */
-        .musica-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-
+        .contenuto h2 { color: #d53f8c; margin-top: 0; }
+        .data { font-weight: bold; color: #888; font-size: 0.9em; }
+        .immagine-event { max-width: 100%; border-radius: 8px; margin-top: 10px; outline: none; }
         .musica-btn {
             background: #d53f8c;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(213, 63, 140, 0.3);
             transition: background 0.3s;
         }
+        .musica-btn:hover { background: #b83279; }
+        .musical-note { position: fixed; font-size: 30px; animation: flyUp 2s ease-out forwards; pointer-events: none; z-index: 100; }
+        @keyframes flyUp { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-200px); } }
 
-        .musica-btn:hover {
-            background: #b83280;
-        }
-
-        /* Responsive per mobile */
         @media screen and (max-width: 600px) {
-            .timeline::after {
-                left: 31px;
-            }
-
-            .evento {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-                text-align: left;
-            }
-
-            .evento::after {
-                left: 15px;
-            }
-
-            .evento.destra {
-                left: 0%;
-            }
+            .timeline::after { left: 31px; }
+            .evento { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .evento::after { left: 15px; }
+            .evento.destra { left: 0%; }
         }
     </style>
 </head>
 <body>
-    <!-- TITOLO E SOTTOTITOLO (MODIFICA QUI) -->
-    <h1>Il nostro percorso insieme</h1>
-    <p class="sottotitolo">Da quel primo giorno a oggi...</p>
 
-    <!-- TIMELINE: Aggiungi/rimuovi eventi qui -->
-    <div class="timeline">
-        <!-- EVENTO 1 (MODIFICA QUI) -->
-        <div class="evento sinistra">
-            <div class="contenuto">
-                <h2>Il nostro primo incontro</h2>
-                <p class="data">15 Maggio 2023</p>
-                <p>Testo personalizzato: descrivi come vi siete conosciuti, dove, emozioni...</p>
-                <img src="immagini/primo-incontro.jpg" alt="Primo incontro" class="immagine-event">
-            </div>
-        </div>
+    <h1>🟢 Il primo anno insieme</h1>
+    <p class="sottotitolo">🟢 Il nostro percorso insieme</p>
 
-        <!-- EVENTO 2 (MODIFICA QUI) -->
-        <div class="evento destra">
-            <div class="contenuto">
-                <h2>Il primo appuntamento</h2>
-                <p class="data">22 Maggio 2023</p>
-                <p>Testo personalizzato: dove siete andati, cosa avete fatto...</p>
-                <img src="immagini/primo-appuntamento.jpg" alt="Primo appuntamento" class="immagine-event">
-            </div>
-        </div>
-
-        <!-- EVENTO 3 (MODIFICA QUI) -->
-        <div class="evento sinistra">
-            <div class="contenuto">
-                <h2>Il primo viaggio insieme</h2>
-                <p class="data">10 Agosto 2023</p>
-                <p>Testo personalizzato: dove siete stati, aneddoti...</p>
-                <img src="immagini/viaggio.jpg" alt="Primo viaggio" class="immagine-event">
-            </div>
-        </div>
-
-        <!-- EVENTO 4 (MODIFICA QUI) -->
-        <div class="evento destra">
-            <div class="contenuto">
-                <h2>Il nostro annuncio speciale</h2>
-                <p class="data">14 Febbraio 2024</p>
-                <p>Testo personalizzato: un momento importante (es. "ci siamo detti ti amo", "abbiamo deciso di convivere", ecc.)...</p>
-            </div>
-        </div>
-
-        <!-- EVENTO 5 (MODIFICA QUI) -->
-        <div class="evento sinistra">
-            <div class="contenuto">
-                <h2>Oggi: il nostro anniversario!</h2>
-                <p class="data">9 Luglio 2026</p>
-                <p>Testo personalizzato: un messaggio per questo giorno speciale...</p>
-                <img src="immagini/anniversario.jpg" alt="Anniversario" class="immagine-event">
-            </div>
-        </div>
+    <div class="musica-container" style="text-align:center; margin: 40px 0;">
+        <button class="musica-btn" onclick="playMusica()">Un po' di musica?</button>
+        <audio id="musica" src="musica/🟢 nome-canzone.mp3" loop></audio>
     </div>
 
-    <!-- TESTO CENTRALE (OPZIONALE) -->
-    <p class="testo-centrale">
-        "Grazie per essere la mia persona preferita. Ogni giorno con te è un’avventura."
-    </p>
+    <div class="timeline">
+        <!-- EVENTO 1 (FOTO) -->
+        <div class="evento sinistra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">💖</div>
+                <h2>🟢 Il nostro primo incontro</h2>
+                <p class="data">🟢 15 Maggio 2023</p>
+                <p>🟢 Scrivi qui come vi siete conosciuti...</p>
+                <img src="immagini/🟢 foto1.jpg" alt="Ricordo 1" class="immagine-event">
+            </div>
+        </div>
 
-    <!-- PULSANTE PER LA MUSICA (OPZIONALE) -->
-    <div class="musica-container">
-        <button class="musica-btn" onclick="playMusica()">▶ Ascolta la nostra canzone</button>
-        <audio id="musica" src="musica/la-nostra-canzone.mp3" loop></audio>
+        <!-- EVENTO 2 (FOTO) -->
+        <div class="evento destra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">🌸</div>
+                <h2>🟢 Il primo appuntamento</h2>
+                <p class="data">🟢 22 Maggio 2023</p>
+                <p>🟢 Scrivi qui dove siete andati...</p>
+                <img src="immagini/🟢 foto2.jpg" alt="Ricordo 2" class="immagine-event">
+            </div>
+        </div>
+
+        <!-- EVENTO 3 (VIDEO) -->
+        <div class="evento sinistra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">✨</div>
+                <h2>🟢 Un momento speciale</h2>
+                <p class="data">🟢 10 Agosto 2023</p>
+                <p>🟢 Scrivi qui un ricordo legato a questo video...</p>
+                <video controls class="immagine-event"><source src="video/🟢 video1.mp4" type="video/mp4"></video>
+            </div>
+        </div>
+
+        <!-- EVENTO 4 (FOTO) -->
+        <div class="evento destra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">🌹</div>
+                <h2>🟢 Un ricordo felice</h2>
+                <p class="data">🟢 Inserisci data...</p>
+                <p>🟢 Scrivi qui un bel ricordo...</p>
+                <img src="immagini/🟢 foto3.jpg" alt="Ricordo 3" class="immagine-event">
+            </div>
+        </div>
+
+        <!-- EVENTO 5 (VIDEO) -->
+        <div class="evento sinistra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">🌟</div>
+                <h2>🟢 Le nostre risate</h2>
+                <p class="data">🟢 14 Febbraio 2024</p>
+                <p>🟢 Scrivi qui perché questo video è speciale...</p>
+                <video controls class="immagine-event"><source src="video/🟢 video2.mp4" type="video/mp4"></video>
+            </div>
+        </div>
+
+        <!-- EVENTO 6 (FOTO) -->
+        <div class="evento destra scroll-fade">
+            <div class="contenuto">
+                <div class="sticker">🎉</div>
+                <h2>🟢 Oggi: il nostro anniversario!</h2>
+                <p class="data">🟢 9 Luglio 2026</p>
+                <p>🟢 Scrivi qui il tuo messaggio...</p>
+                <img src="immagini/🟢 foto4.jpg" alt="Anniversario" class="immagine-event">
+            </div>
+        </div>
     </div>
 
     <script>
-        // Funzione per riprodurre la musica
         function playMusica() {
             const audio = document.getElementById('musica');
             const btn = document.querySelector('.musica-btn');
             if (audio.paused) {
                 audio.play();
                 btn.textContent = "⏸ Pausa";
+                createNote();
             } else {
                 audio.pause();
-                btn.textContent = "▶ Ascolta la nostra canzone";
+                btn.textContent = "Un po' di musica?";
             }
         }
+        function createNote() {
+            const note = document.createElement('div');
+            note.innerHTML = "🎵";
+            note.className = "musical-note";
+            note.style.left = (Math.random() * 80 + 10) + "%";
+            note.style.bottom = "20px";
+            document.body.appendChild(note);
+            setTimeout(() => note.remove(), 2000);
+        }
+        
+        // Logica per fermare la musica quando parte un video
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('play', () => {
+                const audio = document.getElementById('musica');
+                const btn = document.querySelector('.musica-btn');
+                if (!audio.paused) {
+                    audio.pause();
+                    btn.textContent = "Un po' di musica?";
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
